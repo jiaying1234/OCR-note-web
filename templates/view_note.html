@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>查看筆記</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right top, #d5e8a6, #84b58d, #458172, #174e51, #001f28);
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            height: 100vh;
+            background-size: cover;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+        .note-link {
+            display: block;
+            margin: 10px 0;
+            font-size: 18px;
+            color: #333;
+            text-decoration: none;
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+        }
+        .note-link:hover {
+            color: #458172;
+        }
+        .note-details {
+            display: none;
+            margin-bottom: 20px;
+        }
+        .note-details textarea {
+            width: 100%;
+            height: 200px;
+            box-sizing: border-box;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background: #84b58d;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: #458172;
+        }
+    </style>
+    <script>
+        function toggleDetails(noteName) {
+            var details = document.getElementById('details_' + noteName);
+            if (details.style.display === 'none') {
+                details.style.display = 'block';
+            } else {
+                details.style.display = 'none';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>查看筆記</h1>
+        <form method="POST" action="{{ url_for('view_note') }}">
+            {% for note_name, note_content in notes.items() %}
+            <a href="#" class="note-link" onclick="toggleDetails('{{ note_name }}')">{{ note_name }}</a>
+            <div class="note-details" id="details_{{ note_name }}">
+                <form method="POST" action="{{ url_for('view_note') }}">
+                    <textarea name="note_content_{{ note_name }}">{{ note_content }}</textarea>
+                    <input type="hidden" name="note_name" value="{{ note_name }}">
+                    <button type="submit" name="action" value="update">更新</button>
+                    <button type="submit" name="action" value="delete">刪除</button>
+                </form>
+            </div>
+            {% endfor %}
+        </form>
+        <a href="{{ url_for('home') }}"><button>返回主頁</button></a>
+    </div>
+</body>
+</html>
