@@ -11,9 +11,9 @@
 
 ![image](https://github.com/user-attachments/assets/89664b0e-9889-4681-9249-42c9708f2b93)
 
-![image](https://github.com/user-attachments/assets/aeac07a3-054d-4d1c-b8af-bebfd2f1bc55)
+![image](https://github.com/user-attachments/assets/fc9c1214-d384-483c-adcf-68d5265a6fdf)
 
 
 查看筆記介面
 
-![image](https://github.com/user-attachments/assets/2cd73b0e-bfd1-4006-8fbf-b102f3956638)
+![image](https://github.com/user-attachments/assets/bd14b217-af11-4dfb-b0f3-76bb1739de50)
