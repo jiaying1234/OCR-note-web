@@ -8,7 +8,7 @@
 
 2.運行 Flask 應用
 
-python app.py
+`python app.py`
 
 3.確保本地建立了 uploads 資料夾來儲存上傳的圖片。
 
