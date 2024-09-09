@@ -1,5 +1,17 @@
 # OCR-note-web
  Convert your images to text
+
+運行步驟：
+1.安裝必要的依賴
+
+pip install Flask pytesseract pillow textblob
+
+2.運行 Flask 應用
+
+python app.py
+
+3.確保本地建立了 uploads 資料夾來儲存上傳的圖片。
+
  
 初始介面
 
