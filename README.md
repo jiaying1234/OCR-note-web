@@ -4,7 +4,7 @@
 運行步驟：
 1.安裝必要的依賴
 
-pip install Flask pytesseract pillow textblob
+`pip install Flask pytesseract pillow textblob`
 
 2.運行 Flask 應用
 
