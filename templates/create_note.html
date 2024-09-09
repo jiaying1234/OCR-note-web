@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>創建筆記</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right top, #d5e8a6, #84b58d, #458172, #174e51, #001f28);
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            height: 100vh;
+            background-size: cover;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        input[type="text"], input[type="file"], textarea {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        textarea {
+            height: 200px;
+        }
+        button {
+            background: #84b58d;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: #458172;
+        }
+    </style>
+    <script>
+        function uploadFile() {
+            var fileInput = document.getElementById('image');
+            var formData = new FormData();
+            formData.append('image', fileInput.files[0]);
+
+            fetch('/upload_image', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    document.getElementById('note_content').value = data.text;
+                } else {
+                    alert('圖片處理失敗');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>創建筆記</h1>
+        <form method="POST" action="{{ url_for('create_note') }}">
+            <div class="form-group">
+                <label for="exam_name">筆記名稱：</label>
+                <input type="text" id="exam_name" name="exam_name" required>
+            </div>
+            <div class="form-group">
+                <label for="image">上傳圖片（可選）：</label>
+                <input type="file" id="image" name="image" accept="image/*">
+                <button type="button" onclick="uploadFile()">上傳並提取文字</button>
+            </div>
+            <div class="form-group">
+                <label for="note_content">筆記內容：</label>
+                <textarea id="note_content" name="note_content"></textarea>
+            </div>
+            <button type="submit">提交</button>
+        </form>
+        <a href="{{ url_for('home') }}"><button>返回主頁</button></a>
+    </div>
+</body>
+</html>
