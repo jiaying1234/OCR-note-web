@@ -2,6 +2,7 @@
  Convert your images to text
 
 運行步驟：
+
 1.安裝必要的依賴
 
 `pip install Flask pytesseract pillow textblob`
@@ -11,6 +12,8 @@
 `python app.py`
 
 3.確保本地建立了 uploads 資料夾來儲存上傳的圖片。
+
+*****
 
  
 初始介面
