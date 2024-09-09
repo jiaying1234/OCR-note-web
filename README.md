@@ -8,7 +8,7 @@
 
 開發環境：Windows 10　，　Visual Studio Code
 
-# 運行步驟：
+# 運行步驟
 
 1.安裝必要的依賴
 
