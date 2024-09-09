@@ -1,6 +1,6 @@
 # OCR-note-web
  Convert your images to text
-# 概數
+# 概述
 
 基於 Flask + Pytesseract + TextBlob 開發的圖片轉文字網站，實現了圖片上傳、OCR 字符識別和簡單的自然語言處理，前端使用 HTML、CSS、JavaScript 來構建和處理用戶界面。
 
